@@ -10,7 +10,6 @@ st.set_page_config(
     page_icon=":home:",
     layout="wide",
     menu_items={
-        "Source code": "https://github.com/stuartburrell/scottish-offer-calculator",
         "Report a bug": "https://github.com/stuartburrell/scottish-offer-calculator/issues",
     },
 )
