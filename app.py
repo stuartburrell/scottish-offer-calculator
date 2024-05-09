@@ -1,7 +1,8 @@
 import streamlit as st
-from src.footer import FOOTER
-from src.data import generate_offers_data
-from src.graph import generate_total_required_cash_graph
+from footer import FOOTER
+from data import generate_offers_data
+from graph import generate_total_required_cash_graph
+from mortgage import Loan
 
 APP_TITLE = "Scottish offer calculator"
 
@@ -31,11 +32,27 @@ home_report = st.sidebar.number_input(
 legal_fees = st.sidebar.number_input(
     "Legal fees (£)", value=1600, help="The conveyancing costs, not including LBTT."
 )
+mortgage_rate = st.sidebar.number_input(
+    "Mortgage interest rate (%)",
+    value=5.2,
+    help="The conveyancing costs, not including LBTT.",
+)
 ltv = st.sidebar.slider("Mortgage LTV (%)", value=90)
+
+mortgage_term = st.sidebar.slider(
+    "Mortgage term (%)", min_value=2, max_value=40, value=35
+)
 st.sidebar.markdown("## Mortgage summary")
 mortgage_deposit = (1 - ltv / 100) * home_report
+loan = Loan(
+    principal=round(home_report - mortgage_deposit),
+    interest=mortgage_rate / 100,
+    term=mortgage_term,
+)
+
 st.sidebar.markdown(f"**Deposit amount:** £{round(mortgage_deposit):,}")
 st.sidebar.markdown(f"**Loan amount:** £{round(home_report - mortgage_deposit):,}")
+st.sidebar.markdown(f"**Monthly repayment:** £{round(loan.monthly_payment)}")
 st.sidebar.markdown(FOOTER, unsafe_allow_html=True)
 
 data, total_table = generate_offers_data(

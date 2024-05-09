@@ -1,6 +1,6 @@
 import pandas as pd
 from typing import Tuple
-from src.lbtt import compute_lbtt
+from lbtt import compute_lbtt
 
 
 def generate_base_offer_dataframe(home_report: float) -> pd.DataFrame:
