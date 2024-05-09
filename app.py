@@ -40,7 +40,7 @@ mortgage_rate = st.sidebar.number_input(
 ltv = st.sidebar.slider("Mortgage LTV (%)", value=90)
 
 mortgage_term = st.sidebar.slider(
-    "Mortgage term (%)", min_value=2, max_value=40, value=35
+    "Mortgage term (years)", min_value=2, max_value=40, value=35
 )
 st.sidebar.markdown("## Mortgage summary")
 mortgage_deposit = (1 - ltv / 100) * home_report
