@@ -35,7 +35,6 @@ legal_fees = st.sidebar.number_input(
 mortgage_rate = st.sidebar.number_input(
     "Mortgage interest rate (%)",
     value=5.2,
-    help="The conveyancing costs, not including LBTT.",
 )
 ltv = st.sidebar.slider("Mortgage LTV (%)", value=90)
 
