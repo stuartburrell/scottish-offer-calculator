@@ -25,7 +25,7 @@ st.sidebar.markdown("## Your purchase details")
 ftb_status = st.sidebar.toggle("First-time buyer")
 home_report = st.sidebar.number_input(
     "Home report value (£)",
-    value=585_000,
+    value=400_000,
     help="The valuation stated in the home report.",
     step=1000,
 )
